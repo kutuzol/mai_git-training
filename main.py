@@ -13,8 +13,9 @@ def main():
     write_data(FILENAME, data)
     print("Данные записаны в файл.")
     
-    print("Чтение данных из файла:")
+
     content = read_data(FILENAME)
+    print("Данные были считаны из файла...:")
     for line in content:
         print(line)
 
