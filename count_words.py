@@ -1,9 +1,20 @@
 import re
+
 def count_words(filename):
     """Подсчитывает количество слов в текстовом файле, игнорируя знаки препинания."""
-    with open(filename, 'r', encoding='utf-8') as f:
-        text = f.read()
-    # Используем регулярку для поиска слов (буквы, цифры, подчеркивания)
-    words = re.findall(r'\b\w+\b', text)
-    return len(words)  # Возвращаем количество слов в файле
+    word_count = 0
+    pattern = re.compile(r'\w+')
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            for line in f:
+                words = pattern.findall(line)
+                word_count += len(words)
+    except FileNotFoundError:
+        print(f"Файл {filename} не найден.")
+        return 0
+    except IOError as e:
+        print(f"Ошибка при чтении файла {filename}: {e}")
+        return 0
+    return word_count
+
 
