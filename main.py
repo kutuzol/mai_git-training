@@ -10,8 +10,8 @@ def main():
         "Строка 4: Это новая строка, раньше её не было"
     ]
     
+    print("Данные записываются в файл...")
     write_data(FILENAME, data)
-    print("Данные записаны в файл.")
     
     print("Чтение данных из файла:")
     content = read_data(FILENAME)
