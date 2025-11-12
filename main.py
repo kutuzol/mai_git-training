@@ -1,6 +1,7 @@
 
 from file_ops import write_data, read_data
 from config import FILENAME
+from count_line import count_lines 
 from count_words import count_words
 def main():
     data = [
@@ -10,13 +11,18 @@ def main():
         "Строка 4: Это новая строка, раньше её не было"
     ]
     
+    print("Данные записываются в файл...")
     write_data(FILENAME, data)
-    print("Данные записаны в файл.")
     
     print("Чтение данных из файла:")
     content = read_data(FILENAME)
     for line in content:
         print(line)
+
+  # Используем новую функцию
+    total_lines = count_lines(FILENAME)
+    print(f"Всего строк в {FILENAME}: {total_lines}")
+
 
     total_words = count_words(FILENAME)
     print(f"Количество слов в файле {FILENAME}: {total_words}")
